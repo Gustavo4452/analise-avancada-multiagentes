@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Painel interativo de vendas da papelaria entre janeiro e março de 2026.">
+    <title>Vendas da papelaria | Dashboard</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topo">
+      <div class="topo__interno">
+        <div class="topo__texto">
+          <h1>Vendas da papelaria</h1>
+          <p class="introducao">Acompanhe o valor bruto, o volume de transações e a distribuição do seu faturamento.</p>
+        </div>
+        <div class="topo__imagem" aria-hidden="true"></div>
+        <p class="sobrelinha topo__rotulo">PAINEL DE VENDAS · 1º TRIMESTRE DE 2026</p>
+      </div>
+    </header>
+
+    <main id="conteudo" class="conteudo">
+      <section class="filtros" aria-labelledby="titulo-filtros">
+        <div class="secao-cabecalho">
+          <div>
+            <p class="sobrelinha sobrelinha--escura">EXPLORE OS DADOS</p>
+            <h2 id="titulo-filtros">Filtros</h2>
+          </div>
+          <button id="limpar-filtros" class="botao-secundario" type="button">Limpar filtros</button>
+        </div>
+        <div class="filtros__campos">
+          <label for="filtro-cidade">Cidade
+            <select id="filtro-cidade">
+              <option value="">Todas as cidades</option>
+            </select>
+          </label>
+          <label for="filtro-categoria">Categoria
+            <select id="filtro-categoria">
+              <option value="">Todas as categorias</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section aria-labelledby="titulo-indicadores">
+        <div class="secao-cabecalho secao-cabecalho--compacto">
+          <div>
+            <p class="sobrelinha sobrelinha--escura">RESUMO DO RECORTE</p>
+            <h2 id="titulo-indicadores">Indicadores</h2>
+          </div>
+          <p id="contagem-registros" class="texto-auxiliar" aria-live="polite"></p>
+        </div>
+        <div class="indicadores">
+          <article class="cartao-indicador">
+            <h3>Valor bruto vendido</h3>
+            <p id="indicador-total" class="indicador-valor">—</p>
+            <p class="indicador-nota">Soma dos valores das transações</p>
+          </article>
+          <article class="cartao-indicador">
+            <h3>Quantidade de vendas</h3>
+            <p id="indicador-vendas" class="indicador-valor">—</p>
+            <p class="indicador-nota">Uma linha corresponde a uma venda</p>
+          </article>
+          <article class="cartao-indicador">
+            <h3>Ticket médio</h3>
+            <p id="indicador-ticket" class="indicador-valor">—</p>
+            <p class="indicador-nota">Valor bruto vendido ÷ transações</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="graficos" aria-label="Gráficos das vendas">
+        <article class="cartao-grafico">
+          <div class="cartao-grafico__titulo">
+            <div>
+              <p class="sobrelinha sobrelinha--escura">COMPARAÇÃO</p>
+              <h2>Valor vendido por categoria</h2>
+            </div>
+          </div>
+          <p id="descricao-categorias" class="texto-auxiliar">Soma do valor bruto vendido em cada categoria.</p>
+          <div id="grafico-categorias" class="grafico" role="img" aria-labelledby="titulo-categorias-a11y descricao-categorias">
+            <span id="titulo-categorias-a11y" class="visualmente-oculto">Gráfico de barras: valor vendido por categoria</span>
+          </div>
+        </article>
+        <article class="cartao-grafico">
+          <div class="cartao-grafico__titulo">
+            <div>
+              <p class="sobrelinha sobrelinha--escura">EVOLUÇÃO NO TEMPO</p>
+              <h2>Valor vendido por mês</h2>
+            </div>
+          </div>
+          <p id="descricao-mensal" class="texto-auxiliar">Soma do valor bruto vendido em cada mês.</p>
+          <div id="grafico-mensal" class="grafico" role="img" aria-labelledby="titulo-mensal-a11y descricao-mensal">
+            <span id="titulo-mensal-a11y" class="visualmente-oculto">Gráfico de linha: valor vendido por mês</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="cartao-tabela" aria-labelledby="titulo-tabela">
+        <div class="secao-cabecalho secao-cabecalho--compacto">
+          <div>
+            <p class="sobrelinha sobrelinha--escura">DETALHAMENTO</p>
+            <h2 id="titulo-tabela">Transações</h2>
+          </div>
+          <p id="contagem-tabela" class="texto-auxiliar"></p>
+        </div>
+        <p id="estado-vazio" class="estado-vazio" role="status" hidden>Nenhuma venda corresponde aos filtros selecionados. Altere ou limpe os filtros.</p>
+        <div id="envoltorio-tabela" class="tabela-rolagem">
+          <table>
+            <caption class="visualmente-oculto">Lista de vendas conforme os filtros selecionados</caption>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Venda</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Produto</th>
+                <th scope="col" class="numero">Unidades</th>
+                <th scope="col" class="numero">Valor bruto</th>
+              </tr>
+            </thead>
+            <tbody id="linhas-tabela"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="nota-metodologica" aria-label="Nota metodológica">
+        <strong>Como interpretar:</strong> cada linha representa uma transação e “unidades” é a soma dos itens vendidos, não a quantidade de vendas. Valor bruto não desconta custos ou despesas e não representa lucro.
+        <a href="metodologia.html">Leia a metodologia e as limitações</a>.
+      </aside>
+    </main>
+
+    <footer class="rodape"><p>Fonte: <code>papelaria_limpa.csv</code> · 1º de janeiro a 31 de março de 2026</p></footer>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "fonte": "papelaria_limpa.csv",
+  "granularidade": "uma linha por venda; id_venda identifica a transação",
+  "quantidade_registros": 180,
+  "quantidade_colunas_fonte": 9,
+  "nulos_por_coluna": {
+    "id_venda": 0,
+    "data": 0,
+    "cidade": 0,
+    "categoria": 0,
+    "produto": 0,
+    "quantidade": 0,
+    "preco_unitario": 0,
+    "forma_pagamento": 0,
+    "valor_venda": 0
+  },
+  "duplicatas_exatas": 0,
+  "id_venda_unicos": 180,
+  "data_inicial": "2026-01-01",
+  "data_final": "2026-03-31",
+  "quantidade_unidades": 548,
+  "total_vendido_centavos": 2005900,
+  "transacoes": 180,
+  "ticket_medio_centavos": 11144,
+  "totais_por_categoria": {
+    "Acessórios": 1051700,
+    "Livros": 743800,
+    "Papelaria": 210400
+  },
+  "totais_por_cidade": {
+    "Campinas": 857800,
+    "Santos": 693750,
+    "Sorocaba": 454350
+  },
+  "totais_por_mes": {
+    "2026-01": 623500,
+    "2026-02": 618100,
+    "2026-03": 764300
+  },
+  "campos_monetarios": "representados em centavos inteiros para evitar imprecisão decimal no navegador"
+}

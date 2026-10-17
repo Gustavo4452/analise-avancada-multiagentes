@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: dashboard-vendas-papelaria
+    runtime: static
+    buildCommand: echo "No build step required"
+    staticPublishPath: ./projeto-dashboard/site

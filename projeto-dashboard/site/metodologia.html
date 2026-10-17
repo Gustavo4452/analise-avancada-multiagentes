@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Definições e limitações do dashboard de vendas da papelaria.">
+    <title>Metodologia | Vendas da papelaria</title>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <header class="topo">
+      <div class="topo__interno">
+        <p class="sobrelinha">DADOS E DEFINIÇÕES</p>
+        <h1>Como ler este painel</h1>
+        <p class="introducao">Fonte, regras usadas na preparação e limites do que os números permitem concluir.</p>
+      </div>
+    </header>
+    <main id="conteudo" class="conteudo">
+      <article class="cartao-tabela metodologia">
+        <h2>Fonte e período</h2>
+        <p>O dashboard usa <code>papelaria_limpa.csv</code>: 180 registros e 9 colunas, de 1º de janeiro a 31 de março de 2026. Cada linha representa uma venda/transação e <code>id_venda</code> identifica a venda.</p>
+
+        <h2>Indicadores</h2>
+        <ul>
+          <li><strong>Valor bruto vendido:</strong> soma de <code>valor_venda</code>, calculado como quantidade multiplicada pelo preço unitário.</li>
+          <li><strong>Quantidade de vendas:</strong> número de linhas/transações; no conjunto completo, 180.</li>
+          <li><strong>Ticket médio:</strong> valor bruto vendido dividido pelo número de transações.</li>
+          <li><strong>Unidades:</strong> soma da coluna quantidade; no conjunto completo, 548. Unidades não são transações.</li>
+        </ul>
+
+        <h2>Validação e preparação</h2>
+        <p>O script Python com pandas verifica colunas, datas, valores ausentes, identificadores únicos, quantidades e preços positivos e a igualdade entre valor informado e quantidade × preço em cada registro. Neste arquivo há zero valores ausentes e zero duplicatas exatas. O script mantém todas as linhas e interrompe com erro se encontrar duplicatas ou inconsistências; não faz deduplicação automática. Os valores monetários usados pelo dashboard são convertidos para centavos inteiros.</p>
+
+        <h2>Limitações</h2>
+        <p>Valor bruto vendido não é lucro: os dados não trazem custos, despesas, margens ou devoluções. A análise verifica a consistência interna do CSV, mas não compara com uma fonte financeira independente. O recorte de três meses não é suficiente para afirmar sazonalidade anual.</p>
+        <p>O contexto completo e comandos de reprodução estão em <code>ANALISE.md</code> e <code>README.md</code> na pasta do projeto.</p>
+        <p><a href="index.html">Voltar ao dashboard</a></p>
+      </article>
+    </main>
+  </body>
+</html>
