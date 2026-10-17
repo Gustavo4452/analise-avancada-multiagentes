@@ -1,0 +1,26 @@
+# Ambientes, caches e dependências locais
+.venv/
+**/__pycache__/
+*.py[cod]
+node_modules/
+
+# Dados brutos e arquivos de trabalho privados
+/vendas_papelaria.csv
+/papelaria_limpa.csv
+/categorias.png
+/cidades.png
+/pagina_madeira.png
+/graficos.py
+/pagina_madeira.py
+/projeto-dashboard/preparar_dados.py
+/projeto-dashboard/README.md
+/projeto-dashboard/site/
+/projeto-dashboard/tests/
+/projeto-dashboard/decaydence.zip
+
+# Segredos e arquivos do sistema
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
